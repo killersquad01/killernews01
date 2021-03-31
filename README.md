@@ -1,0 +1,1 @@
+use `docker-compose up` to start application

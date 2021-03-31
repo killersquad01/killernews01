@@ -1,0 +1,51 @@
+version: '3'
+services:
+  ms_users:
+    container_name: 'ms_users'
+    image: node:14.16.0
+    volumes:
+      - ./users:/src/app
+    working_dir: /src/app
+    user: 'node'
+    environment:
+      - NODE_ENV=dev
+    depends_on:
+      - sc_mongo_users
+    ports:
+      - 3000:3000
+    command: npm start
+  
+  ms_news:
+    container_name: 'ms_news'
+    image: node:14.16.0
+    volumes:
+      - ./news:/src/app
+    working_dir: /src/app
+    user: 'node'
+    environment:
+      - NODE_ENV=dev
+    depends_on:
+      - sc_mongo_users
+    ports:
+      - 4000:4000
+    command: npm start
+  
+  sc_mongo_users:
+    container_name: sc_mongo_users
+    image: mongo:4.4.2
+    expose:
+      - 27017
+    volumes:
+      - ~/data/db:/data/users/db
+    ports:
+      - 27022:27017
+
+  sc_mongo_news:
+    container_name: sc_mongo_news
+    image: mongo:4.4.2
+    expose:
+      - 27017
+    volumes:
+      - ~/data/db:/data/news/db
+    ports:
+      - 27023:27017
