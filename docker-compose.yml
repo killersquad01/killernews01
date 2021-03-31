@@ -67,8 +67,8 @@ services:
         - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
         - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
     networks:
-        - rabbitmq_net
+        - app_network
   
   networks:
-    app-network:
+    app_network:
       driver: bridge
