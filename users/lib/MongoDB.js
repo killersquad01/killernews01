@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 module.exports = {
     init() {
         mongoose.connect(
-            `mongodb://localhost:27022/users_microservice`,
+            `mongodb://192.168.1.6:27022/users_microservice`,
             { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false },
             error => {
                 if (error) {
